@@ -1,0 +1,44 @@
+version: "3.7"
+
+services:
+  backend:
+    image: docker.io/hiage/backend:${TAG_VERSION}
+    pull_policy: always
+    hostname: backend-${SERVICES_VERSION}
+    container_name: backend-${SERVICES_VERSION}
+    networks:
+      netstack:
+        ipv4_address: ${IP_BACKEND}
+    ports:
+      - "${PORT_BACKEND}:${PORT_BACKEND}"
+    healthcheck:
+      test: ["CMD", "curl", "-XGET", "http://${IP_BACKEND}:${PORT_BACKEND}"]
+      interval: 1s
+      timeout: 3s
+      retries: 5
+
+  frontend:
+    image: docker.io/hiage/frontend:${TAG_VERSION}
+    pull_policy: always
+    hostname: frontend-${SERVICES_VERSION}
+    container_name: frontend-${SERVICES_VERSION}
+    networks:
+      netstack:
+        ipv4_address: ${IP_FRONTEND}
+    extra_hosts:
+      - "frontend: ${IP_FRONTEND}"
+    environment:
+        BACKEND_API: ${IP_BACKEND}:${PORT_BACKEND}
+    ports:
+      - "${PORT_FRONTEND}:${PORT_FRONTEND}"
+    healthcheck:
+      test: ["CMD", "curl", "-XGET", "http://${IP_FRONTEND}:${PORT_FRONTEND}"]
+      interval: 5s
+      timeout: 10s
+      retries: 5
+
+networks:
+  netstack:
+    ipam:
+      config:
+        - subnet: ${IP_SUBNET}
