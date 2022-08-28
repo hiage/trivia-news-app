@@ -1,5 +1,5 @@
 # Trivia News App
-[![build](https://github.com/hiage/trivia-news-app/actions/workflows/build-push-dev.yaml/badge.svg)](https://github.com/hiage/trivia-news-app/actions/workflows/build-push-dev.yaml)
+[![build](https://github.com/hiage/trivia-news-app/actions/workflows/build-push-dev.yaml/badge.svg)](https://github.com/hiage/trivia-news-app/actions/workflows/build-push-dev.yaml) [![build](https://github.com/hiage/trivia-news-app/actions/workflows/build-push-stg.yaml/badge.svg)](https://github.com/hiage/trivia-news-app/actions/workflows/build-push-stg.yaml) [![build](https://github.com/hiage/trivia-news-app/actions/workflows/build-push-prd.yaml/badge.svg)](https://github.com/hiage/trivia-news-app/actions/workflows/build-push-prd.yaml)
 
 Trivia News App containerized application written in python and golang. kubernetes ready application, have 2 services:
 - frontend display the backend data. connect with internal DNS kubernetes.
