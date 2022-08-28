@@ -5,18 +5,29 @@ Trivia News App containerized application written in python and golang. kubernet
 - frontend display the backend data. connect with internal DNS kubernetes.
 - backend serving REST API for frontend from datasource numbersapi[dot]com
 
-you can run this application from local computer with docker-compose. follow the guide below. 
+you can run this application on kubernetes with helm and local computer with docker-compose. follow the guide below. 
 
 ### Prerequisites
 You should have basic knowledge of docker, kubernetes, helm, golang and python, for develop this application.
+please make sure below is installed before deploy the application.
+- [docker](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04) 
+- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-kubectl-binary-with-curl-on-linux)
+- [helm](https://helm.sh/docs/intro/install/#from-script)
+- [docker-compose](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-22-04)
 
-- docker 
-- kubernetes
-- kubectl
-- helm
-- docker-compose
+container images is available here:
+- https://hub.docker.com/r/hiage/backend/tags
+- https://hub.docker.com/r/hiage/frontend/tags
 
 ## How to 
+
+change as needed the repository url ***docker.io/hiage/backend*** and ***docker.io/hiage/frontend*** with your repository. 
+
+run these command before deploy the application.
+```
+export REPO_BACKEND=docker.io/hiage/backend
+export REPO_FRONTEND=docker.io/hiage/frontend
+```
 #### Kubernetes Environment
 *deploy* to *development* command:
 ```
@@ -30,7 +41,6 @@ You should have basic knowledge of docker, kubernetes, helm, golang and python, 
 ```
 ./deploy-prd.sh
 ```
-
 
 #### Local Environment
 run development mode from your local computer with docker-compose:
